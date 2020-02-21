@@ -1,3 +1,5 @@
+# language: fr
+
 @compte
 Fonctionnalité: Créer le premier compte administrateur
     Afin de créer le premier compte administrateur

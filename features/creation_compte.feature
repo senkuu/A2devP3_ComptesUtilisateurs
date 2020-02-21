@@ -1,4 +1,4 @@
-# language : fr
+# language: fr
 
 @compte
 Fonctionnalité: Créer un compte autre que le premier

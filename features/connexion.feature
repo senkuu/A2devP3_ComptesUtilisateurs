@@ -1,6 +1,8 @@
+# language: fr
+
 @compte
 Fonctionnalité: Me connecter sur le site
-    Afin de me connecter
+    Afin de me c0onnecter
     En tant que visiteur
     je dois fournir un couple email / mot de passe valide
 
@@ -24,12 +26,12 @@ Plan du scénario: Fournir les bons identifiants pour être connecté avec le bo
     | pat@ate.com      | mdp pat      | consultant | 
 
 
-Plan du Scénario: Le mauvais identifiant est fourni
+Scénario: Le mauvais identifiant est fourni
     Etant donné que je suis un visiteur
     Lorsque je fournis l'email inconnu@noone.com
     Alors un message d'erreur est retourné avec le code d'erreur EMAIL_INCONNU et je ne suis pas connecté
 
-Plan du Scénario: Le mauvais mot de passe est fourni
+Scénario: Le mauvais mot de passe est fourni
     Etant donné que je suis un visiteur
     Lorsque je fournis l'email existant pat@ate.com et le mot de passe erroné motdepasseinconnu
     Alors un message d'erreur est retourné avec le code d'erreur MDP_INCONNU et je ne suis pas connecté
