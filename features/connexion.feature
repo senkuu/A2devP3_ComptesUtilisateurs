@@ -2,7 +2,7 @@
 
 @compte
 Fonctionnalité: Me connecter sur le site
-    Afin de me c0onnecter
+    Afin de me connecter
     En tant que visiteur
     je dois fournir un couple email / mot de passe valide
 
