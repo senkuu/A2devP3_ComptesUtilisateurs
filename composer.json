@@ -1,4 +1,7 @@
 {
+    "autoload": {
+        "psr-4": {"NWS\\": "site/"}
+    },
     "require-dev": {
         "behat/behat": "^3.6"
     }
