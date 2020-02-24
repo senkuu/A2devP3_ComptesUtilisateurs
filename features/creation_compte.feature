@@ -27,15 +27,19 @@ Etant donné que les comptes suivants existent:
     | 5e4fe1ba31954 | pat          | pat@ate.com      | $2y$12$SzRdZCmULYW0P/MTWcP/ke7vjJNixkv/yApHFYF/ypNCqYIxICmYi | consultant   | 
 
 Plan du Scénario: Les informations fournies sont valides
-
     Etant donné que je suis un visiteur
     Lorsque je fournis le nom d'affichage <nom>, l'email <email> et le mot de passe <mdp>
     Alors mon compte est bien créé avec le rôle <role> consutlant et ajouté à la liste des comptes
     
     Exemples:
-    | nom       | email             |  mdp                      | role       |
-    | toto      | toto@example.com  | 12caracteresAu%moins      | consultant |
-    | vance     | vance@ajout.org   | #Aa1#Aa1#Aa1#Aa1#Aa1      | consultant |
+      | nom       | email             |  mdp                      | role       |
+      | toto      | toto@example.com  | 12caracteresAu%moins      | consultant |
+      | vance     | vance@ajout.org   | #Aa1#Aa1#Aa1#Aa1#Aa1      | consultant |
+
+Scénario: l'email fourni existe déjà
+   Etant donné que je suis un visiteur
+    Lorsque je fournis le nom d'affichage "nomok", l'email "vance@ajout.org" et le mot de passe "#Aa1#Aa1#Aa1#Aa1#Aa1"
+    Alors un message d'erreur est retourné avec le code d'erreur "EMAIL_DEJA_UTILISE" 
 
 Plan du Scénario: Le nom fourni pour l'affichage n'est pas valide
     Etant donné que je suis un visiteur
@@ -43,10 +47,10 @@ Plan du Scénario: Le nom fourni pour l'affichage n'est pas valide
     Alors un message d'erreur est retourné avec le code d'erreur <codeerreur>
     
     Exemples:
-    | nom                      | email             | mdp                 | codeerreur               |                
-    | aa                       | mailok.com        | #Aa1#Aa1#Aa1#Aa1#Aa1 | NOM_MINI_3_CARACTERES    |
-    | abcdefghijklmnopqrstuvwa | mailok.com        | #Aa1#Aa1#Aa1#Aa1#Aa1 | NOM_MAXI_16_CARACTERES   |
-    | aa  # flkj               | mailok.com        | #Aa1#Aa1#Aa1#Aa1#Aa1 | NOM_CARACTERES_INTERDITS |
+      | nom                      | email             | mdp                 | codeerreur               |                
+      | aa                       | mailok.com        | #Aa1#Aa1#Aa1#Aa1#Aa1 | NOM_MINI_3_CARACTERES    |
+      | abcdefghijklmnopqrstuvwa | mailok.com        | #Aa1#Aa1#Aa1#Aa1#Aa1 | NOM_MAXI_16_CARACTERES   |
+      | aa  # flkj               | mailok.com        | #Aa1#Aa1#Aa1#Aa1#Aa1 | NOM_CARACTERES_INTERDITS |
 
 Plan du Scénario: L'email fourni pour l'affichage n'est pas valide
     Etant donné que je suis un visiteur
@@ -54,9 +58,9 @@ Plan du Scénario: L'email fourni pour l'affichage n'est pas valide
     Alors un message d'erreur est retourné avec le code d'erreur <codeerreur>
     
     Exemples:
-    | nom     | email             | mdp                  | codeerreur        |                
-    | nom ok  | unemail           | #Aa1#Aa1#Aa1#Aa1#Aa1 | MAIL_MAL_FORME    |
-    | nom ok  | un email . com    | #Aa1#Aa1#Aa1#Aa1#Aa1 | MAIL_MAL_FORME    |
+      | nom     | email             | mdp                  | codeerreur        |                
+      | nom ok  | unemail           | #Aa1#Aa1#Aa1#Aa1#Aa1 | MAIL_MAL_FORME    |
+      | nom ok  | un email . com    | #Aa1#Aa1#Aa1#Aa1#Aa1 | MAIL_MAL_FORME    |
  
 Plan du Scénario: Le mot de passe fourni pour l'affichage n'est pas valide
     Etant donné que je suis un visiteur
@@ -64,13 +68,13 @@ Plan du Scénario: Le mot de passe fourni pour l'affichage n'est pas valide
     Alors un message d'erreur est retourné avec le code d'erreur <codeerreur>
     
     Exemples:
-    | nom     | email       | mdp                                                                         | codeerreur               |                
-    | nom ok  | mailok.com  | <#Aa1#Aa1#Aa1#Aa1#Aa1>                                                      | MDP_CARACTERES_INTERDITS |
-    | nom ok  | mailok.com  | #Aa1#Aa1#                                                                   | MDP_MINI_12_CARACTERES   |
-    | nom ok  | mailok.com  | #Aa1#Aa1#Aa1#Aa1#Aa1#Aa1#Aa1#Aa1#Aa1#Aa1#Aa1#Aa1#Aa1#Aa1#Aa1#Aa1#Aa1#Aa1et1 | MDP_MAXI_72_CARACTERES   |
-    | nom ok  | mailok.com  | Aa1Aa1Aa1Aa1Aa1Aa1Aa1Aa1                                                    | MDP_MANQUE_CARAC_SPECIAL |
-    | nom ok  | mailok.com  | #Aa#Aa#Aa#Aa#Aa#Aa#Aa#Aa#Aa#Aa                                              | MDP_MANQUE_CHIFFRE       |
-    | nom ok  | mailok.com  | #a1#a1#a1#a1#a1#a1#a1#a1#a1                                                 | MDP_MANQUE_MAJUSCULE     |
-    | nom ok  | mailok.com  | #A1#A1#A1#A1#A1#A1#A1#A1#A1#A1#A1                                           | MDP_MANQUE_MINUSCULE     |
+      | nom     | email       | mdp                                                                         | codeerreur               |                
+      | nom ok  | mailok.com  | <#Aa1#Aa1#Aa1#Aa1#Aa1>                                                      | MDP_CARACTERES_INTERDITS |
+      | nom ok  | mailok.com  | #Aa1#Aa1#                                                                   | MDP_MINI_12_CARACTERES   |
+      | nom ok  | mailok.com  | #Aa1#Aa1#Aa1#Aa1#Aa1#Aa1#Aa1#Aa1#Aa1#Aa1#Aa1#Aa1#Aa1#Aa1#Aa1#Aa1#Aa1#Aa1et1 | MDP_MAXI_72_CARACTERES   |
+      | nom ok  | mailok.com  | Aa1Aa1Aa1Aa1Aa1Aa1Aa1Aa1                                                    | MDP_MANQUE_CARAC_SPECIAL |
+      | nom ok  | mailok.com  | #Aa#Aa#Aa#Aa#Aa#Aa#Aa#Aa#Aa#Aa                                              | MDP_MANQUE_CHIFFRE       |
+      | nom ok  | mailok.com  | #a1#a1#a1#a1#a1#a1#a1#a1#a1                                                 | MDP_MANQUE_MAJUSCULE     |
+      | nom ok  | mailok.com  | #A1#A1#A1#A1#A1#A1#A1#A1#A1#A1#A1                                           | MDP_MANQUE_MINUSCULE     |
      
  
